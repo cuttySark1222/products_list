@@ -1,5 +1,14 @@
 products = [] # 建立购物清单
 
+# 增加读取购物清单的需求
+with open('products-list.csv', 'r', encoding='utf-8') as f:
+	for line in f:
+		if '商品,价格' in line:
+			continue
+		name, price = line.strip().split(',')
+		products.append([name, price])
+print(products)
+
 while True:
 	name = input("请输入商品名称： ")
 	if name == 'q': # 如果使用者输入 q ，程序终止
